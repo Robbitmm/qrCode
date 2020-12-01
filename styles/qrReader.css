@@ -4,5 +4,6 @@ body{
 
 #preview{
     width: 100%;
+    heigth: 80%;
     border: 1px solid black;
 }
