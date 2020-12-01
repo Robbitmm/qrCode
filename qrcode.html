@@ -1,31 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
-    <title>Instascan</title>
+    <title>Qr Code Reader</title>
     <link rel="stylesheet" href="styles/qrReader.css">
-    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script>	
+    <meta name="viewport" content="width=device-width, inicial-scale=1.0">
+    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script type="text/javascript" src="scripts/btn.js"></script>
   </head>
-  <body>
-    <video id="preview"></video>
-    <script>
-        let scanner = new Instascan.Scanner(
-            {
-                video: document.getElementById('preview')
-            }
-        );
-        scanner.addListener('scan', function(content) {
-            alert('Escaneou o conteudo: ' + content);
-            window.open(content, "_blank");
-        });
-        Instascan.Camera.getCameras().then(cameras => 
-        {
-            if(cameras.length > 0){
-                scanner.start(cameras[1]);
-            } else {
-                console.error("Não existe câmera no dispositivo!");
-            }
-        });
-    </script>
+  <body onload="Read()">
+    <div id="content">
+        <video id="preview"></video>
+    </div>
 
+    <label for="result">Resultado:</label>
+    <input id="result" readonly>
+    <ul id="scanned">
+
+    </ul>
  </body>
 </html>
