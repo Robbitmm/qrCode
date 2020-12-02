@@ -1,7 +1,7 @@
 let list = [];
 
 function Read(){
-    let videoPlayer = document.getElementById('preview'),
+    let videoPlayer = document.querySelector('#preview'),
         scanner = new Instascan.Scanner(
         {
             video: videoPlayer,
@@ -12,7 +12,7 @@ function Read(){
     videoPlayer.classList.add('active');
     
     scanner.addListener('scan', function(content){
-        document.getElementById("result").value = content;
+        document.querySelector("#result").value = content;
         Add(content);
         //window.open(content, "_blank");
     });
@@ -20,7 +20,7 @@ function Read(){
     Instascan.Camera.getCameras().then(cameras => 
     {
         if(cameras.length > 0){
-            scanner.start(cameras[1]);
+            scanner.start(cameras[0]);
         }else{
             console.error("Não existe câmera no dispositivo!");
         }
@@ -36,7 +36,7 @@ function Add(newItem){
 }
 
 function AddtoList(list){
-    let ul = document.getElementById('scanned');
+    let ul = document.querySelector('#scanned');
     ul.innerHTML = ""
 
     for(let i = 0; i < list.length; i++){
@@ -45,4 +45,17 @@ function AddtoList(list){
 
         li.innerHTML = list[i];
     };
+}
+
+function Save(){
+    let img = document.querySelector('img');
+
+    let imgPath = img.getAttribute('src');
+    let fileName = getFileName(imgPath);
+
+    saveAs(imgPath, fileName);
+
+    function getFileName(str){
+        return str.substring(str.lastIndexOf('/')+1);
+    }
 }

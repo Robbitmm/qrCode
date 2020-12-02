@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Generator</title>
+
+        <meta name="viewport" content="width=device-width, inicial-scale=1.0">
+
+        <script type="text/javascript" src="scripts/qrcode.js"></script>
+        <script type="text/javascript" src="scripts/FileSaver.js"></script>
+        <script type="text/javascript" src="scripts/btn.js"></script>
+
+        <link rel="stylesheet" href="styles/qrReader.css">
+    </head>
+    <body>
+        <div id="container-generator">
+            <input type="text" id="valor" value="" oninput="createQrCode()" placeholder="Insira o texto">
+            <div id="qrcode"></div>
+            <button id="download-btn" onclick="Save()">Savlvar como imagem</button>
+        </div>
+    </body>
+    <script>
+    
+    function createQrCode(){
+        let userInput = document.getElementById('valor').value;
+            divCode = document.getElementById('qrcode');
+        divCode.innerHTML = "";
+
+        var qrcode = new QRCode(divCode, {
+            text: userInput,
+            width: 256,
+            height: 256,
+            colorDark: "black",
+            colorLight: "white",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+    }
+    
+    </script>
+</html>

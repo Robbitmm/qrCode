@@ -1,10 +1,12 @@
 body{
     margin: 0;
-    background-color: blue;
+}
+
+#container-generator{
+    padding: 10px;
 }
 
 #preview{
     width: 100%;
-    heigth: 80%;
     border: 1px solid black;
 }

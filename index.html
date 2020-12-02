@@ -1,27 +1,24 @@
+﻿<!DOCTYPE html>
 <html>
-    <head>
-        <script type="text/javascript" src="qrcode.js"></script>
-    </head>
-    <body>
-        <input type="text" id="valor" value="">
-        <button onClick="createQrCode()">Gerar QR Code</button>
-        <div id="qrcode"></div>
-    </body>
-    <script>
-    
-    function createQrCode()
-    {
-        var userInput = document.getElementById('valor').value;
+  <head>
+    <title>Qr Code Reader</title>
 
-        var qrcode = new QRCode("qrcode", {
-            text: userInput,
-            width: 256,
-            height: 256,
-            colorDark: "black",
-            colorLight: "white",
-            correctLevel : QRCode.CorrectLevel.H
-        });
-    }
+    <link rel="stylesheet" href="styles/qrReader.css">
+    <meta name="viewport" content="width=device-width, inicial-scale=1.0">
+
+    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script type="text/javascript" src="scripts/btn.js"></script>
     
-    </script>
+  </head>
+  <body onload="Read()">
+    <div id="content">
+        <video id="preview"></video>
+    </div>
+
+    <label for="result">Resultado:</label>
+    <input id="result" readonly>
+    <ul id="scanned">
+
+    </ul>
+ </body>
 </html>
